@@ -11,16 +11,8 @@
         "interface/ftdi/esp32_devkitj_v1.cfg",
         "target/esp32.cfg"
     ],
-    "idf.portWin": "COM12",
     "idf.pythonBinPathWin": "C:\\Users\\hozuk\\.espressif\\python_env\\idf4.4_py3.8_env\\Scripts\\python.exe",
     "idf.toolsPathWin": "C:\\Users\\hozuk\\.espressif",
-    "files.associations": {
-        "freertos.h": "c",
-        "gpio.h": "c",
-        "stdio.h": "c",
-        "control_led.h": "c",
-        "control_switch.h": "c",
-        "stdlib.h": "c"
-    },
+    "idf.portWin": "COM12",
     "idf.flashType": "UART"
 }

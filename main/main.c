@@ -6,8 +6,8 @@
 
 QueueHandle_t xQueueSwitch;
 
-void vTaskSwitch(void *pvParameters);
 void vTaskLed(void *pvParameters);
+void vTaskSwitch(void *pvParameters);
 
 void init_queue(void){
     xQueueSwitch = xQueueCreate(5 , sizeof(info_led) );
