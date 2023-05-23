@@ -14,5 +14,11 @@
     "idf.pythonBinPathWin": "C:\\Users\\hozuk\\.espressif\\python_env\\idf4.4_py3.8_env\\Scripts\\python.exe",
     "idf.toolsPathWin": "C:\\Users\\hozuk\\.espressif",
     "idf.portWin": "COM12",
-    "idf.flashType": "UART"
+    "idf.flashType": "UART",
+    "files.associations": {
+        "control_switch.h": "c",
+        "control_wifi.h": "c",
+        "*.tcc": "c",
+        "*.ipp": "c"
+    }
 }
