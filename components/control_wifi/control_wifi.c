@@ -12,8 +12,8 @@
 #include "lwip/sys.h"
 
 // WiFi parameters
-#define WIFI_SSID "VITALINA 4G"
-#define WIFI_PASS "Ju@321564"
+#define WIFI_SSID "insert wifi ssid"
+#define WIFI_PASS "insert wifi password"
 
 
 // Event group
