@@ -45,6 +45,6 @@ void vTaskSwitch(void *pvParameters)
         }
         old_status_switch = status_switch;
 
-        vTaskDelay( 250 / portTICK_PERIOD_MS );
+        vTaskDelay( 200 / portTICK_PERIOD_MS );
     }
 }
