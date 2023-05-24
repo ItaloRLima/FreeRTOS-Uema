@@ -77,10 +77,10 @@ void mqtt_app_start(void)
 {
     ESP_LOGI(TAG, "STARTING MQTT");
     esp_mqtt_client_config_t mqttConfig = {
-        .uri = "mqtt://34.229.145.165:1883",
-        .username = "autohome",
-        .password = "comida05",
-        .client_id = "mqttx_be73e035"
+        .uri = "INSERT MQTT_IP",
+        .username = "INSERT MQTT_USERNAME",
+        .password = "INSERET MQTT_PASSWORD",
+        .client_id = "INSERT MQTT_ID"
         };
     
     client = esp_mqtt_client_init(&mqttConfig);
