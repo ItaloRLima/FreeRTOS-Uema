@@ -11,11 +11,19 @@
 
 extern QueueHandle_t xQueueSwitch;
 
+extern QueueHandle_t xQueueCount;
+
 typedef struct{
     int led;
     bool status;
 }info_led_t;
 
+typedef struct {
+    int clicks;
+} info_count_t;
+
 extern info_led_t info_led;
+extern info_count_t info_count;
+
 
 #endif

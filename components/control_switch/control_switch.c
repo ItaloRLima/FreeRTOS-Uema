@@ -2,7 +2,7 @@
 #include "control_switch.h"
 #include "../../definition.h"
 
-
+info_count_t info_count_click;
 info_led_t status_led;
 
 #define SWITCH 19
@@ -41,6 +41,9 @@ void vTaskSwitch(void *pvParameters)
             }else{
                 printf("O led esta desligado.\n");
             }
+
+            info_count_click.clicks = count;
+            xQueueSend( xQueueCount, &info_count_click, portMAX_DELAY);
             xQueueSend( xQueueSwitch, &status_led, portMAX_DELAY);
         }
         old_status_switch = status_switch;

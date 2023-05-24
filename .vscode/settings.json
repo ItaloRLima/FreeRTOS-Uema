@@ -19,6 +19,13 @@
         "control_switch.h": "c",
         "control_wifi.h": "c",
         "*.tcc": "c",
-        "*.ipp": "c"
+        "*.ipp": "c",
+        "esp_system.h": "c",
+        "task.h": "c",
+        "mqtt_client.h": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "algorithm": "c",
+        "system_error": "c"
     }
 }

@@ -1,4 +1,6 @@
 #include <string.h>
+#include "include/control_wifi.h"
+#include "../control_mqtt/include/control_mqtt.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/event_groups.h"
@@ -6,7 +8,6 @@
 #include "esp_wifi.h"
 #include "esp_event.h"
 #include "esp_log.h"
-#include "nvs_flash.h"
 
 #include "lwip/err.h"
 #include "lwip/sys.h"
@@ -15,6 +16,7 @@
 #define WIFI_SSID "VITALINA 4G"
 #define WIFI_PASS "Ju@321564"
 
+static const char *TAG = "MQTT_BUTTON02";
 
 // Event group
 static EventGroupHandle_t wifi_event_group;
@@ -36,15 +38,18 @@ static esp_err_t event_handler(void *ctx, system_event_t *event)
 
     case SYSTEM_EVENT_STA_START:
       esp_wifi_connect();
+      ESP_LOGI(TAG, "Tentando conectar ao Wi-Fi\n");
       break;
 
     case SYSTEM_EVENT_STA_GOT_IP:
       xEventGroupSetBits(wifi_event_group, CONNECTED_BIT);
+      mqtt_app_start();
       break;
 
     case SYSTEM_EVENT_STA_DISCONNECTED:
       xEventGroupClearBits(wifi_event_group, CONNECTED_BIT);
       printf("DISCONNECTED FROM %s!\n",WIFI_SSID);
+      esp_wifi_connect();
       break;
 
     default:
@@ -91,7 +96,7 @@ void init()
   // disable the default wifi logging
   esp_log_level_set("wifi", ESP_LOG_NONE);
 
-  // create the event group to handle wifi events
+  // create the event group to handle wifi eventsP
   wifi_event_group = xEventGroupCreate();
 
   // initialize the tcp stack
@@ -105,5 +110,7 @@ void init()
   ESP_ERROR_CHECK(esp_wifi_init(&wifi_init_config));
   ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
   ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+  ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config) );
+  ESP_ERROR_CHECK(esp_wifi_start());
 
 }
